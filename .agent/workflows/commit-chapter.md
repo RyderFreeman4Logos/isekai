@@ -7,9 +7,10 @@ description: 在完成新章节后更新世界观并提交
 此工作流用于在 `dev` 分支完成一章内容的撰写后，依据变更内容更新世界观数据库，并准备合并到 `main`。
 
 ## 1. 检查变更
-运行以下命令查看自上次合并到 `main` 以来的变更：
+运行以下命令查看当前工作区的变更（包括未提交和未跟踪的文件）：
 ```bash
-git diff main...HEAD -- chapters/
+git status chapters/
+git diff chapters/
 ```
 // turbo
 请仔细阅读上述命令的输出，分析新章节的剧情、新登场人物、新设定或已有角色的状态变化。
