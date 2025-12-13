@@ -5,6 +5,30 @@ CHAPTERS_DIR = "chapters"
 EXPORT_TXT_DIR = "export/txt"
 FULL_NOVEL_PATH = "full_novel.txt"
 
+def clean_markdown(text):
+    # Remove bold/italic markers (**text**, __text__, *text*, _text_)
+    # Note: We need to be careful not to remove * from lists first if we want to handle lists separately
+    # But usually just stripping ** is enough for bold.
+    text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+    text = re.sub(r'__(.*?)__', r'\1', text)
+    
+    # Remove links [text](url) -> text
+    text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    
+    # Remove list bullets (*, -, +) at start of lines
+    # Replace with nothing or just trim? 
+    # User's example had no indentation for paragraphs.
+    # Text: "*   **单向行程：**" -> "单向行程："
+    text = re.sub(r'^\s*[\*\-\+]\s+', '', text, flags=re.MULTILINE)
+    
+    # Remove horizontal rules
+    text = re.sub(r'^\s*[-*_]{3,}\s*$', '', text, flags=re.MULTILINE)
+    
+    # Remove blockquotes >
+    text = re.sub(r'^\s*>\s?', '', text, flags=re.MULTILINE)
+    
+    return text
+
 def main():
     # Ensure export directory exists
     os.makedirs(EXPORT_TXT_DIR, exist_ok=True)
@@ -32,6 +56,9 @@ def main():
         
         with open(input_path, "r", encoding="utf-8") as f:
             content = f.read().strip()
+            
+        # Clean Markdown
+        content = clean_markdown(content)
             
         # Format header
         header = f"第{n_str}章 {title}"
