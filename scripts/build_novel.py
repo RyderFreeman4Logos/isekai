@@ -3,7 +3,7 @@ import re
 
 CHAPTERS_DIR = "chapters"
 EXPORT_TXT_DIR = "export/txt"
-FULL_NOVEL_PATH = "full_novel.txt"
+FULL_NOVEL_PATH = "诸神乱舞的异世界中，被神厌弃的不可知论者想要爱智慧.txt"
 
 def clean_markdown(text):
     # Remove bold/italic markers (**text**, __text__, *text*, _text_)
