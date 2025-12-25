@@ -91,6 +91,19 @@ description: |
 
 详见 [references/anti-patterns.md](references/anti-patterns.md)
 
+## 进阶技巧
+
+详见 [references/advanced-techniques.md](references/advanced-techniques.md)
+- 紧张场景的节奏控制（短句、时间感知）
+- 生理反应代替直接情感
+- 内心矛盾的外化
+- 多视角与平行叙事
+- 悬念与伏笔设置
+- 感应术/心理对话的双层叙事
+- 大规模战斗场景的调度
+- 高手对决的精准描写
+- 宫廷内斗的暗流展示
+
 ## 章节格式
 
 - 文件名：`{n:08}_第{n}章 {章节名}.md`
